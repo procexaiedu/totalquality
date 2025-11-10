@@ -130,12 +130,15 @@ TimeMax: "YYYY-MM-DDTHH:mm:ss-03:00"
 
 ## atualizar_evento
 ```
-EventId: "id"
-Location: "novo local"    (opcional)
-Start: "YYYY-MM-DDTHH:mm:ss-03:00"  (opcional)
-End: "YYYY-MM-DDTHH:mm:ss-03:00"    (opcional)
-Summary: "novo título"    (opcional)
+EventId: "id_do_evento"
+Start: "YYYY-MM-DDTHH:mm:ss-03:00"     (opcional)
+End: "YYYY-MM-DDTHH:mm:ss-03:00"       (opcional)
+Location: "novo local"                 (opcional)
+Summary: "novo título"                 (opcional)
+Description: "nova descrição"          (opcional)
 ```
+
+Passe APENAS os campos que estão sendo alterados. EventId é obrigatório.
 
 ## deletar_evento
 ```
