@@ -1,0 +1,51 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Descrição da Tool:\nUse esta ferramenta para ATUALIZAR/MODIFICAR um evento existente. Pode alterar horário, título, descrição, participantes, local. O usuário precisa fornecer o ID do evento ou você pode obtê-lo usando 'Get many events'. SEMPRE mostre as mudanças e peça confirmação antes de atualizar.",
+        "operation": "update",
+        "calendar": {
+          "__rl": true,
+          "value": "contato@procexai.tech",
+          "mode": "list",
+          "cachedResultName": "contato@procexai.tech"
+        },
+        "eventId": "={{ $fromAI('EventId', '', 'string') }}",
+        "updateFields": {
+          "description": "={{ $fromAI('Description', '', 'string') }}",
+          "end": "={{ $fromAI('End', '', 'string') }}",
+          "location": "={{ $fromAI('Location', '', 'string') }}",
+          "start": "={{ $fromAI('Start', '', 'string') }}",
+          "summary": "={{ $fromAI('Summary', '', 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        2448,
+        -288
+      ],
+      "id": "404e77ca-074c-4b94-9cba-1874d8bb4dbe",
+      "name": "atualizar_evento",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "tlkNz2lQ0sUlD2eL",
+          "name": "Total Quality"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "atualizar_evento": {
+      "ai_tool": [
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2fecef58d6bf43cf9041f65ddaf87c0c9a49f94544940cb5ccf72b8259d7a6cd"
+  }
+}

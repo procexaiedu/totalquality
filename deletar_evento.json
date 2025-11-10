@@ -1,0 +1,47 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Descrição da Tool:\nUse esta ferramenta para DELETAR/CANCELAR um evento existente. O usuário precisa fornecer o ID do evento ou você pode obtê-lo usando a ferramenta 'Get many events'. SEMPRE confirme com o usuário antes de deletar um evento.",
+        "operation": "delete",
+        "calendar": {
+          "__rl": true,
+          "value": "contato@procexai.tech",
+          "mode": "list",
+          "cachedResultName": "contato@procexai.tech"
+        },
+        "eventId": "={{ $fromAI('EventId', '', 'string') }}",
+        "options": {
+          "sendUpdates": "all"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        2160,
+        -288
+      ],
+      "id": "0b9145b9-4bd6-4ca2-bbe9-012f3c81851e",
+      "name": "deletar_eventos",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "tlkNz2lQ0sUlD2eL",
+          "name": "Total Quality"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "deletar_eventos": {
+      "ai_tool": [
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2fecef58d6bf43cf9041f65ddaf87c0c9a49f94544940cb5ccf72b8259d7a6cd"
+  }
+}

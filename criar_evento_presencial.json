@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Descrição da Tool:\nUse esta ferramenta para CRIAR um novo evento PRESENCIAL sem link de videochamada. Use quando o usuário mencionar endereço físico, local presencial, ou quando não mencionar que é online. Inclua o endereço no campo location.",
+        "calendar": {
+          "__rl": true,
+          "value": "contato@procexai.tech",
+          "mode": "list",
+          "cachedResultName": "contato@procexai.tech"
+        },
+        "additionalFields": {
+          "description": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Description', ``, 'string') }}",
+          "location": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Location', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        2000,
+        -288
+      ],
+      "id": "d0565c56-b8a0-44af-b1e1-3956b0cd76f2",
+      "name": "criar_evento_presencial",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "tlkNz2lQ0sUlD2eL",
+          "name": "Total Quality"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "criar_evento_presencial": {
+      "ai_tool": [
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2fecef58d6bf43cf9041f65ddaf87c0c9a49f94544940cb5ccf72b8259d7a6cd"
+  }
+}

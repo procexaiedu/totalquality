@@ -1,0 +1,46 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Descrição da Tool:\nUse esta ferramenta para LISTAR e BUSCAR eventos existentes no calendário. \n\nQUANDO USAR:\n- \"Me mostre minha agenda de hoje/amanhã/esta semana\"\n- \"Tenho algum compromisso na sexta?\"\n- \"Qual meu próximo evento?\"\n- Antes de atualizar ou deletar (para obter o Event ID)\n\nIMPORTANTE: \n- Para \"hoje\", use TimeMin = início do dia atual e TimeMax = fim do dia atual\n- Para \"amanhã\", use TimeMin = início de amanhã e TimeMax = fim de amanhã\n- Para \"esta semana\", use TimeMin = hoje e TimeMax = domingo\n- Se o usuário não especificar período, busque os próximos 7 dias",
+        "operation": "getAll",
+        "calendar": {
+          "__rl": true,
+          "value": "contato@procexai.tech",
+          "mode": "list",
+          "cachedResultName": "contato@procexai.tech"
+        },
+        "timeMin": "={{ $fromAI('TimeMin', '', 'string') }}",
+        "timeMax": "={{ $fromAI('TimeMax', '', 'string') }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleCalendarTool",
+      "typeVersion": 1.3,
+      "position": [
+        2304,
+        -288
+      ],
+      "id": "b05801d9-882a-441e-82d8-c44c62cc360e",
+      "name": "puxar_eventos",
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "tlkNz2lQ0sUlD2eL",
+          "name": "Total Quality"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "puxar_eventos": {
+      "ai_tool": [
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2fecef58d6bf43cf9041f65ddaf87c0c9a49f94544940cb5ccf72b8259d7a6cd"
+  }
+}
