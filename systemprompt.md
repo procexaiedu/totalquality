@@ -39,15 +39,28 @@ Passo 1: Usuário diz "adiciona local no evento do biel"
          Chame puxar_eventos (PRIMEIRA busca) → obtém EventId
          ↓
 Passo 2: Confirme mudança com usuário
+         "Vou alterar [mudanças]. Posso confirmar?"
          ↓
-Passo 3: Usuário confirma "sim"
+Passo 3: Usuário responde "sim", "ss", "confirma", etc
          ↓
-         Chame puxar_eventos (SEGUNDA busca) → refrescar EventId
+         IMEDIATAMENTE (sem esperar mais nada):
+         Chame puxar_eventos (SEGUNDA busca) → obtém EventId FRESCO
          ↓
-Passo 4: Chame atualizar_evento COM EventId da SEGUNDA busca
+Passo 4: Com o EventId fresco, chame atualizar_evento
+         atualizar_evento com EventId + Location/Start/End/Summary
+         ↓
+Passo 5: "✅ Alteração feita com sucesso!"
 ```
 
-**CRÍTICO:** Você DEVE chamar puxar_eventos NOVAMENTE antes de atualizar_evento. Nunca reutilize EventId anterior.
+**CRÍTICO - O QUE NÃO FAZER:**
+❌ Tentar chamar atualizar_evento sem chamar puxar_eventos antes
+❌ Reutilizar EventId da primeira busca - SEMPRE refrescar
+❌ Usar EventId de uma conversa anterior
+
+**CRÍTICO - O QUE FAZER:**
+✅ Após usuário confirmar ("sim"/"ss"), IMEDIATAMENTE chamar puxar_eventos
+✅ Usar o EventId DESSA segunda chamada de puxar_eventos
+✅ ENTÃO chamar atualizar_evento
 
 ---
 
@@ -60,15 +73,28 @@ Passo 1: Usuário diz "cancela o evento de sexta"
          Chame puxar_eventos (PRIMEIRA busca) → obtém EventId
          ↓
 Passo 2: Mostre detalhes + aviso "⚠️ Esta ação NÃO pode ser desfeita!"
+         "Digite 'sim' para confirmar o cancelamento."
          ↓
-Passo 3: Usuário confirma "sim"
+Passo 3: Usuário responde "sim"
          ↓
-         Chame puxar_eventos (SEGUNDA busca) → refrescar EventId
+         IMEDIATAMENTE (sem esperar mais nada):
+         Chame puxar_eventos (SEGUNDA busca) → obtém EventId FRESCO
          ↓
-Passo 4: Chame deletar_evento COM EventId da SEGUNDA busca
+Passo 4: Com o EventId fresco, chame deletar_evento
+         deletar_evento com EventId
+         ↓
+Passo 5: "✅ Evento deletado com sucesso!"
 ```
 
-**CRÍTICO:** Você DEVE chamar puxar_eventos NOVAMENTE antes de deletar_evento. Nunca reutilize EventId anterior.
+**CRÍTICO - O QUE NÃO FAZER:**
+❌ Tentar chamar deletar_evento sem chamar puxar_eventos antes
+❌ Reutilizar EventId da primeira busca - SEMPRE refrescar
+❌ Usar EventId de uma conversa anterior
+
+**CRÍTICO - O QUE FAZER:**
+✅ Após usuário confirmar "sim", IMEDIATAMENTE chamar puxar_eventos
+✅ Usar o EventId DESSA segunda chamada de puxar_eventos
+✅ ENTÃO chamar deletar_evento
 
 ---
 
