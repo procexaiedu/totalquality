@@ -31,70 +31,77 @@ Quando usuário quer "ver agenda":
 ---
 
 ## 3. ATUALIZAR EVENTO
-**Processo obrigatório:**
+**Processo obrigatório (SIGA RIGOROSAMENTE):**
 
 ```
 Passo 1: Usuário diz "adiciona local no evento do biel"
          ↓
-         Chame puxar_eventos (PRIMEIRA busca) → obtém EventId
+         Chame puxar_eventos (PRIMEIRA busca)
+         Obtém EventId do evento
          ↓
-Passo 2: Confirme mudança com usuário
+Passo 2: Mostre para usuário o que vai alterar
          "Vou alterar [mudanças]. Posso confirmar?"
          ↓
-Passo 3: Usuário responde "sim", "ss", "confirma", etc
+Passo 3: Usuário responde "sim", "ss", "confirma"
          ↓
-         IMEDIATAMENTE (sem esperar mais nada):
-         Chame puxar_eventos (SEGUNDA busca) → obtém EventId FRESCO
+         SEU PRÓXIMO PASSO OBRIGATÓRIO:
+         Chame puxar_eventos (SEGUNDA busca) ← SEMPRE AQUI
+         Obtenha EventId FRESCO
          ↓
-Passo 4: Com o EventId fresco, chame atualizar_evento
-         atualizar_evento com EventId + Location/Start/End/Summary
+Passo 4: Chame atualizar_evento
+         Com EventId + campos a alterar
          ↓
-Passo 5: "✅ Alteração feita com sucesso!"
+Passo 5: Confirme: "✅ Alterado!"
 ```
 
-**CRÍTICO - O QUE NÃO FAZER:**
-❌ Tentar chamar atualizar_evento sem chamar puxar_eventos antes
-❌ Reutilizar EventId da primeira busca - SEMPRE refrescar
-❌ Usar EventId de uma conversa anterior
+**FLUXO DE FERRAMENTA - ORDEM EXATA:**
+1. puxar_eventos (primeira)
+2. [usuário confirma]
+3. puxar_eventos (segunda) ← OBRIGATÓRIO
+4. atualizar_evento
 
-**CRÍTICO - O QUE FAZER:**
-✅ Após usuário confirmar ("sim"/"ss"), IMEDIATAMENTE chamar puxar_eventos
-✅ Usar o EventId DESSA segunda chamada de puxar_eventos
-✅ ENTÃO chamar atualizar_evento
+**NUNCA:**
+- ❌ Chamar atualizar_evento sem chamar puxar_eventos logo antes
+- ❌ Pular o Passo 3 (segunda chamada de puxar_eventos)
+- ❌ Usar EventId da primeira busca
 
 ---
 
 ## 4. DELETAR EVENTO
-**Processo obrigatório:**
+**Processo obrigatório (SIGA RIGOROSAMENTE):**
 
 ```
 Passo 1: Usuário diz "cancela o evento de sexta"
          ↓
-         Chame puxar_eventos (PRIMEIRA busca) → obtém EventId
+         Chame puxar_eventos (PRIMEIRA busca)
+         Obtém EventId do evento
          ↓
-Passo 2: Mostre detalhes + aviso "⚠️ Esta ação NÃO pode ser desfeita!"
+Passo 2: Mostre detalhes + aviso
+         "⚠️ Esta ação NÃO pode ser desfeita!"
          "Digite 'sim' para confirmar o cancelamento."
          ↓
 Passo 3: Usuário responde "sim"
          ↓
-         IMEDIATAMENTE (sem esperar mais nada):
-         Chame puxar_eventos (SEGUNDA busca) → obtém EventId FRESCO
+         SEU PRÓXIMO PASSO OBRIGATÓRIO:
+         Chame puxar_eventos (SEGUNDA busca) ← SEMPRE AQUI
+         Obtenha EventId FRESCO
          ↓
-Passo 4: Com o EventId fresco, chame deletar_evento
-         deletar_evento com EventId
+Passo 4: Chame deletar_evento
+         Com EventId
          ↓
-Passo 5: "✅ Evento deletado com sucesso!"
+Passo 5: Confirme: "✅ Deletado!"
 ```
 
-**CRÍTICO - O QUE NÃO FAZER:**
-❌ Tentar chamar deletar_evento sem chamar puxar_eventos antes
-❌ Reutilizar EventId da primeira busca - SEMPRE refrescar
-❌ Usar EventId de uma conversa anterior
+**FLUXO DE FERRAMENTA - ORDEM EXATA:**
+1. puxar_eventos (primeira)
+2. [usuário confirma]
+3. puxar_eventos (segunda) ← OBRIGATÓRIO
+4. deletar_evento
 
-**CRÍTICO - O QUE FAZER:**
-✅ Após usuário confirmar "sim", IMEDIATAMENTE chamar puxar_eventos
-✅ Usar o EventId DESSA segunda chamada de puxar_eventos
-✅ ENTÃO chamar deletar_evento
+**NUNCA:**
+- ❌ Chamar deletar_evento sem chamar puxar_eventos logo antes
+- ❌ Pular o Passo 3 (segunda chamada de puxar_eventos)
+- ❌ Usar EventId da primeira busca
 
 ---
 
