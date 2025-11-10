@@ -46,7 +46,8 @@ Passo 3: Usuário responde "sim", "ss", "confirma"
          ↓
          SEU PRÓXIMO PASSO OBRIGATÓRIO:
          Chame puxar_eventos (SEGUNDA busca) ← SEMPRE AQUI
-         Obtenha EventId FRESCO
+         Use EXATAMENTE os mesmos TimeMin/TimeMax da Passo 1
+         (mesmo se o usuário mudou a data - busque onde o evento ESTÁ agora)
          ↓
 Passo 4: Chame atualizar_evento
          Com EventId + campos a alterar
@@ -84,7 +85,7 @@ Passo 3: Usuário responde "sim"
          ↓
          SEU PRÓXIMO PASSO OBRIGATÓRIO:
          Chame puxar_eventos (SEGUNDA busca) ← SEMPRE AQUI
-         Obtenha EventId FRESCO
+         Use EXATAMENTE os mesmos TimeMin/TimeMax da Passo 1
          ↓
 Passo 4: Chame deletar_evento
          Com EventId
